@@ -17,7 +17,7 @@ const Service = ({ service }) => {
                         }
                     </p>
                     <div className="card-actions justify-start">
-                        <button className="btn bg-[#ebb85e] border-0 text-lg text-black px-10 rounded-lg hover:text-[#ebb85e] hover:bg-white">Details</button>
+                        <button className="btn bg-[#ebb85e] border-0 text-lg text-black px-10 rounded hover:text-[#ebb85e] hover:bg-white">Details</button>
                     </div>
                 </div>
             </div>
