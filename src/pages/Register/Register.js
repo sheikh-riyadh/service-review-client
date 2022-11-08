@@ -3,10 +3,13 @@ import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 import { toast, ToastContainer } from 'react-toastify';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
+const googleProvider = new GoogleAuthProvider()
+const gitHubProvider = new GithubAuthProvider()
 
 const Register = () => {
 
-    const { createUserWithEmailPassword } = useContext(AuthContext)
+    const { createUserWithEmailPassword, loginWithProvider } = useContext(AuthContext)
 
     const handlerOnSubmit = (e) => {
         e.preventDefault()
@@ -29,6 +32,22 @@ const Register = () => {
             })
     }
 
+    const handleLoginWithGoogle = () => {
+        loginWithProvider(googleProvider)
+            .then((response) => {
+                toast("Login succesfull", { position: "top-center", theme: "dark" })
+            })
+            .catch(error => console.error(error))
+    }
+
+    const handleLoginWithGitHub = () => {
+        loginWithProvider(gitHubProvider)
+            .then((response) => {
+                toast("Login succesfull", { position: "top-center", theme: "dark" })
+            })
+            .catch(error => console.error(error))
+    }
+
 
 
     return (
@@ -39,9 +58,9 @@ const Register = () => {
                         <h1 className="text-xl md:text-3xl lg:text-4xl font-bold">Register now</h1>
                     </div>
                     <div className="flex flex-col lg:flex-row items-center">
-                        <button className='text-black text-lg hover:bg-[#ebb85e] px-3 py-2 rounded-lg'>Continue with<FaGoogle className='inline-block ml-2'></FaGoogle></button>
+                        <button onClick={handleLoginWithGoogle} className='text-black text-lg hover:bg-[#ebb85e] px-3 py-2 rounded-lg'>Continue with<FaGoogle className='inline-block ml-2'></FaGoogle></button>
                         <div className="text-sm font-bold lg:mx-2">OR</div>
-                        <button className='text-black text-lg hover:bg-[#ebb85e] px-3 py-2 rounded-lg'>Continue with<FaGithub className='inline-block ml-2'></FaGithub></button>
+                        <button onClick={handleLoginWithGitHub} className='text-black text-lg hover:bg-[#ebb85e] px-3 py-2 rounded-lg'>Continue with<FaGithub className='inline-block ml-2'></FaGithub></button>
                     </div>
                     <form onSubmit={handlerOnSubmit} className="card flex-shrink-0 lg:w-[430px]">
                         <div className="card-body">
