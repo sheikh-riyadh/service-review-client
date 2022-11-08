@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Service from '../../Service/Service';
 const Home = () => {
 
 
     const [limitServices, setLimitServices] = useState()
-
-
     useEffect(() => {
         fetch('https://review-server.vercel.app/limit-services')
             .then(res => res.json())
@@ -19,7 +18,7 @@ const Home = () => {
                 <div className="hero-overlay bg-opacity-20"></div>
                 <div className="hero-content text-center text-neutral-content">
                     <div className="lg:max-w-5xl">
-                        <h1 className="mb-5 text-4xl lg:text-6xl font-bold">PERFECT MOOD
+                        <h1 className="mb-5 text-3xl lg:text-6xl font-bold">PERFECT MOOD
                             IS ALWAYS HERE</h1>
                         <p className="mb-5 text-xl lg:max-w-4xl mx-auto">Many years ago, when I watched the sun go down to the beach at
                             the end of the garden of my house, I received a phone call from a
@@ -29,7 +28,7 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-            <div className=' mt-12 lg:mt-24 px-5 lg:px-10'>
+            <div className='mt-12 lg:mt-24 px-5 lg:px-10'>
                 <h2 className='uppercase text-2xl text-center lg:text-4xl font-bold pb-5 lg:pb-10'>my services</h2>
                 <div className='grid grid-cols-1 lg:grid-cols-3 gap-5'>
                     {
@@ -41,8 +40,10 @@ const Home = () => {
                     }
                 </div>
             </div>
-            <div className='flex justify-center mt-10'>
-                <button className='btn uppercase px-16 bg-[#ebb85e] rounded-xl text-xl font-semibold text-black'>See all</button>
+            <div className='flex justify-center my-10'>
+                <Link to='/services'>
+                    <button className='btn uppercase px-16 hover:text-[#ebb85e] hover:bg-white bg-[#ebb85e] rounded-xl text-xl font-semibold text-black'>See all</button>
+                </Link>
             </div>
         </div>
     );
