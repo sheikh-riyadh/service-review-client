@@ -1,11 +1,12 @@
 import React from 'react';
 import { FaStar } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const Service = ({ service }) => {
     const { _id, serviceTitle, image, rating, Price, details } = service
     return (
         <div>
-            <div className="card shadow-xl border-2 rounded-xl text-white">
+            <div className="card glass shadow-xl rounded-xl text-white">
                 <figure><img className='h-full w-full' src={image} alt="serivce" /></figure>
                 <div className="card-body">
                     <h2 className="card-title">{serviceTitle}</h2>
@@ -17,7 +18,9 @@ const Service = ({ service }) => {
                         }
                     </p>
                     <div className="card-actions justify-start">
-                        <button className="btn bg-[#ebb85e] border-0 text-lg text-black px-10 rounded hover:text-[#ebb85e] hover:bg-white">Details</button>
+                        <Link to={`/service-details/${_id}`}>
+                            <button className="btn bg-[#ebb85e] border-0 text-lg text-black px-10 rounded hover:text-[#ebb85e] hover:bg-white">Details</button>
+                        </Link>
                     </div>
                 </div>
             </div>

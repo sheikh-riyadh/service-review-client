@@ -5,7 +5,7 @@ import logo from '../../../assets/logo.png'
 
 const Header = () => {
     const headerItems = () => {
-        return <div className='flex flex-col lg:flex-row lg:bg-slate-100 py-3 font-semibold text-xl text-black'>
+        return <div className='flex flex-col lg:flex-row lg:bg-white py-3 font-semibold text-xl text-black'>
             <li className='ml-5 mt-5 lg:mt-0 lg:mr-5'>
                 <Link className='hover:bg-[#ebb85e]' to='/'>Home</Link>
             </li>
