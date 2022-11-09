@@ -44,6 +44,7 @@ const Register = () => {
         loginWithProvider(gitHubProvider)
             .then((response) => {
                 toast("Login succesfull", { position: "top-center", theme: "dark" })
+                console.log(response.user)
             })
             .catch(error => console.error(error))
     }
