@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 import { toast, ToastContainer } from 'react-toastify';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
@@ -10,6 +10,10 @@ const gitHubProvider = new GithubAuthProvider()
 const Register = () => {
 
     const { createUserWithEmailPassword, loginWithProvider } = useContext(AuthContext)
+    const location = useLocation()
+    const navigate = useNavigate()
+
+    const from = location.state?.from?.pathname || '/'
 
     const handlerOnSubmit = (e) => {
         e.preventDefault()
@@ -20,11 +24,13 @@ const Register = () => {
         createUserWithEmailPassword(email, password)
             .then(() => {
                 toast("Registration succesfull", { position: "top-center", theme: "dark" })
+                navigate(from, { replace: true })
                 form.reset()
             })
             .catch(error => {
                 if (error.message === "Firebase: Error (auth/email-already-in-use).") {
                     toast("User already exisit", { position: "top-center", theme: "dark" })
+                    navigate(from, { replace: true })
                     form.reset()
                 } else {
                     console.error(error)
@@ -36,6 +42,7 @@ const Register = () => {
         loginWithProvider(googleProvider)
             .then((response) => {
                 toast("Login succesfull", { position: "top-center", theme: "dark" })
+                navigate(from, { replace: true })
             })
             .catch(error => console.error(error))
     }
@@ -44,7 +51,7 @@ const Register = () => {
         loginWithProvider(gitHubProvider)
             .then((response) => {
                 toast("Login succesfull", { position: "top-center", theme: "dark" })
-                console.log(response.user)
+                navigate(from, { replace: true })
             })
             .catch(error => console.error(error))
     }

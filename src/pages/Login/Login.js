@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { FaGoogle, FaGithub } from 'react-icons/fa';
 import { AuthContext } from '../../contexts/AuthProvider';
 import { toast, ToastContainer } from 'react-toastify';
@@ -11,6 +11,9 @@ const Login = () => {
 
     const { loginWithEmailPassword, loginWithProvider } = useContext(AuthContext)
 
+    const location = useLocation()
+    const navigate = useNavigate()
+    const from = location.state?.from?.pathname || "/";
     const handlerOnSubmit = (e) => {
         e.preventDefault()
         const form = e.target;
@@ -20,6 +23,7 @@ const Login = () => {
         loginWithEmailPassword(email, password)
             .then(() => {
                 toast("Login succesfull", { position: "top-center", theme: "dark" })
+                navigate(from, { replace: true })
                 form.reset()
             })
             .catch(error => {
@@ -40,6 +44,7 @@ const Login = () => {
         loginWithProvider(googleProvider)
             .then(() => {
                 toast("Login succesfull", { position: "top-center", theme: "dark" })
+                navigate(from, { replace: true })
             })
             .catch(error => console.error(error))
     }
@@ -48,6 +53,7 @@ const Login = () => {
         loginWithProvider(gitHubProvider)
             .then(() => {
                 toast("Login succesfull", { position: "top-center", theme: "dark" })
+                navigate(from, { replace: true })
             })
             .catch(error => console.error(error))
     }
