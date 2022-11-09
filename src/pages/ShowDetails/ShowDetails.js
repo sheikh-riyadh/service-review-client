@@ -43,7 +43,7 @@ const ShowDetails = () => {
                     }
                 </div>
                 <div className='flex justify-center mt-5 lg:mt-10 '>
-                    <Link className='btn px-10 hover:bg-white rounded-md text-black bg-[#ebb85e] capitalize'>Add review</Link>
+                    <Link to={`/add-review/${_id}`} className='btn px-10 hover:bg-white rounded-md text-black bg-[#ebb85e] capitalize'>Add review</Link>
                 </div>
             </div>
         </div>

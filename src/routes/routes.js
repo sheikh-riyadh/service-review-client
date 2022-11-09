@@ -32,7 +32,8 @@ export const router = createBrowserRouter([
                 loader: ({ params }) => fetch(`https://review-server.vercel.app/services/${params.id}`)
             }, {
                 path: '/add-review/:id',
-                element: <AddReview></AddReview>
+                element: <AddReview></AddReview>,
+                loader: ({ params }) => fetch(`https://review-server.vercel.app/services/${params.id}`)
             }
         ]
     }
