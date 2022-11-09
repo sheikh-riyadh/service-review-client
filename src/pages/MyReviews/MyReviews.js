@@ -13,7 +13,7 @@ const MyReviews = () => {
     }, [user?.email])
 
     const handleDeleteReview = (id) => {
-
+        console.log(id)
     }
     return (
         <div className='my-24 mx-5 lg:mx-24'>

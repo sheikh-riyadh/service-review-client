@@ -11,7 +11,7 @@ const SingleReview = ({ review, handleDeleteReview }) => {
                 </figure>
                 <div className="card-body items-center text-center">
                     <h2 className="card-title">{reviewerName}</h2>
-                    <p>{serviceTitle}</p>
+                    <p className='font-bold'>{serviceTitle}</p>
                     <p>{reviewerMessage}</p>
                     <div className="card-actions flex items-center">
                         <p>Rating: {reviewerRating}</p>
@@ -22,6 +22,7 @@ const SingleReview = ({ review, handleDeleteReview }) => {
                         <FaStar></FaStar>
                     </div>
                 </div>
+                <button onClick={() => handleDeleteReview(_id)} className="btn bg-[#ebb85e] font-semibold hover:bg-[#ebb85e] border-0 text-black text-xl">Delete</button>
             </div>
         </div>
     );
