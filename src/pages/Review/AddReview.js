@@ -8,7 +8,7 @@ const AddReview = () => {
 
 
     const { user } = useContext(AuthContext)
-    const { _id } = useLoaderData()
+    const { _id, serviceTitle } = useLoaderData()
 
     const handlerOnSubmit = (e) => {
         e.preventDefault()
@@ -23,7 +23,8 @@ const AddReview = () => {
             reviewerName,
             reviewerImg: user.photoURL,
             reviewerRating,
-            reviewerEmail
+            reviewerEmail,
+            serviceTitle
         }
 
 

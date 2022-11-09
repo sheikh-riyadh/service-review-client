@@ -55,9 +55,6 @@ const Register = () => {
             })
             .catch(error => console.error(error))
     }
-
-
-
     return (
         <div>
             <div className="hero min-h-screen">

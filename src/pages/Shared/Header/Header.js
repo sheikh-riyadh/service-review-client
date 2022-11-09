@@ -1,32 +1,70 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FaUserCircle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/logo.png'
+import { AuthContext } from '../../../contexts/AuthProvider';
 
 const Header = () => {
+    const { logOut, user } = useContext(AuthContext)
+
+
+
+
+    const handleSignOut = () => {
+        logOut()
+            .then(() => {
+
+            }).catch(error => console.error(error))
+    }
     const headerItems = () => {
-        return <div className='flex flex-col lg:flex-row lg:bg-white py-3 font-semibold text-xl text-black'>
+        return <div className='flex flex-col lg:flex-row lg:bg-white py-2 font-semibold text-lg text-black'>
             <li className='ml-5 mt-5 lg:mt-0 lg:mr-5'>
                 <Link className='hover:bg-[#ebb85e]' to='/'>Home</Link>
             </li>
             <li className='ml-5 mt-5 lg:mt-0 lg:mr-5'>
                 <Link className='hover:bg-[#ebb85e]' to='/services'>Services</Link>
             </li>
-            <li className='mt-5 lg:mt-0 lg:mr-5'>
-                <button className='capitalize border-0 hover:bg-[#ebb85e] text-black'>
-                    <Link to='/register'>Register</Link>
-                </button>
+            <li className='ml-5 mt-5 lg:mt-0 lg:mr-5'>
+                <Link className='hover:bg-[#ebb85e]' to='/services'>Blog</Link>
             </li>
-            <li className='mt-5 lg:mt-0 lg:mr-5'>
-                <button className='capitalize border-0 hover:bg-[#ebb85e] text-black'>
-                    <Link to='/login'>Login</Link>
-                </button>
-            </li>
-            <li className='mt-5 lg:mt-0 lg:mr-5'>
-                <div className='capitalize lg:bg-[#ebb85e]'>
-                    <FaUserCircle className='text-xl'></FaUserCircle>
-                </div>
-            </li>
+            {
+                user?.uid ? <>
+                    <li className='mt-5 lg:mt-0 lg:mr-5'>
+                        <Link to='/my-reviews'><button className='border-0 hover:bg-[#ebb85e] text-black'>My reviews</button></Link>
+                    </li>
+                    <li className='mt-5 lg:mt-0 lg:mr-5'>
+                        <button className='border-0 hover:bg-[#ebb85e] text-black'>Add service</button>
+                    </li>
+                    <li className='mt-5 lg:mt-0 lg:mr-5'>
+                        <button onClick={handleSignOut} className='border-0 hover:bg-[#ebb85e] text-black'>Sign out</button>
+                    </li>
+                    <li className='mt-5 lg:mt-0 lg:mr-5'>
+                        <div className="online">
+                            <div className="w-8 h-8 rounded-full">
+                                <img src={user.photoURL} title={user?.displayName} alt='' />
+                            </div>
+                        </div>
+                    </li>
+                </>
+                    :
+                    <>
+                        <li className='mt-5 lg:mt-0 lg:mr-5'>
+                            <button className='capitalize border-0 hover:bg-[#ebb85e] text-black'>
+                                <Link to='/register'>Register</Link>
+                            </button>
+                        </li>
+                        <li className='mt-5 lg:mt-0 lg:mr-5'>
+                            <button className='capitalize border-0 hover:bg-[#ebb85e] text-black'>
+                                <Link to='/login'>Login</Link>
+                            </button>
+                        </li>
+                        <li className='mt-5 lg:mt-0 lg:mr-5'>
+                            <div className='capitalize lg:bg-[#ebb85e]'>
+                                <FaUserCircle className='text-xl'></FaUserCircle>
+                            </div>
+                        </li>
+                    </>
+            }
         </div>
 
     }
