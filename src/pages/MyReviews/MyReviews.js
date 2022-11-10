@@ -16,10 +16,9 @@ const MyReviews = () => {
 
     const handleDeleteReview = (id) => {
         const agreeDelete = window.confirm('Do you want to delete this item?')
-        console.log(agreeDelete)
         if (agreeDelete) {
             fetch(`https://review-server.vercel.app/delete/${id}`, {
-                method: 'PUT'
+                method: 'DELETE'
             })
                 .then(res => res.json())
                 .then(data => {

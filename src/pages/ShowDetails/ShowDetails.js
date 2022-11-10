@@ -27,14 +27,26 @@ const ShowDetails = () => {
                 </div>
             </div>
             <div className='my-24 mx-5 lg:mx-24'>
-                <h2 className='uppercase text-2xl text-center lg:text-4xl font-bold pb-5 lg:pb-10'>Clients review</h2>
-                <div className='grid grid-cols-1 lg:grid-cols-3 gap-5'>
+                <div>
                     {
-                        reviews?.map(review => <Review
-                            key={review?._id}
-                            review={review}
-                        >
-                        </Review>)
+                        reviews?.length > 0 ?
+
+                            <>
+                                <h2 className='uppercase text-2xl text-center lg:text-4xl font-bold pb-5 lg:pb-10'>Clients review</h2>
+                                <div className='grid grid-cols-1 lg:grid-cols-3 gap-5'>
+                                    {
+                                        reviews?.map(review => <Review
+                                            key={review?._id}
+                                            review={review}
+                                        >
+                                        </Review>)
+                                    }
+                                </div>
+                            </>
+                            :
+                            <>
+                                <h2 className='uppercase text-2xl text-center lg:text-4xl font-bold pb-5 lg:pb-10'>Can not get review yet..</h2>
+                            </>
                     }
                 </div>
                 <div className='flex justify-center mt-5 lg:mt-10 '>
