@@ -4,11 +4,12 @@ import { FaGoogle, FaGithub } from 'react-icons/fa';
 import { AuthContext } from '../../contexts/AuthProvider';
 import { toast, ToastContainer } from 'react-toastify';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
+import useTitle from '../../hooks/useTitle';
 const googleProvider = new GoogleAuthProvider()
 const gitHubProvider = new GithubAuthProvider()
 
 const Login = () => {
-
+    useTitle('Login')
     const { loginWithEmailPassword, loginWithProvider } = useContext(AuthContext)
 
     const location = useLocation()
@@ -57,8 +58,6 @@ const Login = () => {
             })
             .catch(error => console.error(error))
     }
-
-
     return (
         <div>
             <div className="hero min-h-screen">

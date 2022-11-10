@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import useTitle from '../../hooks/useTitle';
 
 const Blog = ({ blog }) => {
     const { image, blogTitle, summary, _id } = blog
+    useTitle('blog')
     return (
         <div className=' mx-5 lg:mx-24'>
             <div className="card lg:card-side bg-gray-900 p-5 shadow-xl rounded-md">

@@ -3,10 +3,12 @@ import { toast, ToastContainer } from 'react-toastify';
 import { AuthContext } from '../../contexts/AuthProvider';
 import SingleReview from './SingleReview';
 import NoFound from '../../assets/page-not-found.svg'
+import useTitle from '../../hooks/useTitle';
 
 const MyReviews = () => {
     const [myReviews, setMyReviews] = useState()
     const { user } = useContext(AuthContext)
+    useTitle('My reviews')
     useEffect(() => {
         fetch(`https://review-server.vercel.app/reviews?email=${user?.email}`)
             .then(res => res.json())

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import useTitle from '../../../hooks/useTitle';
 import Service from '../../Service/Service';
 import About from '../About/About';
 import Newsletter from '../Newsletter/Newsletter';
@@ -13,6 +14,7 @@ const Home = () => {
             .then(data => setLimitServices(data))
     }, [])
 
+    useTitle('Home')
 
     return (
         <div>

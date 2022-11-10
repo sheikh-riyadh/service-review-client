@@ -3,6 +3,7 @@ import { FaStar } from 'react-icons/fa';
 import { useLoaderData } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import { AuthContext } from '../../contexts/AuthProvider';
+import useTitle from '../../hooks/useTitle';
 
 const AddReview = () => {
 
@@ -10,6 +11,7 @@ const AddReview = () => {
     const { user } = useContext(AuthContext)
     const { _id, serviceTitle } = useLoaderData()
 
+    useTitle('Add review')
     const handlerOnSubmit = (e) => {
         e.preventDefault()
         const form = e.target;
@@ -26,7 +28,6 @@ const AddReview = () => {
             reviewerEmail,
             serviceTitle
         }
-
 
         fetch('https://review-server.vercel.app/reviews/', {
             method: 'POST',

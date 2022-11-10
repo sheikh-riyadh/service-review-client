@@ -1,7 +1,9 @@
 import React from 'react';
 import ErrorMessage from '../../assets/error-page.svg'
+import useTitle from '../../hooks/useTitle';
 
 const ErrorPage = () => {
+    useTitle("404 page not found")
     return (
         <div className='flex flex-col justify-center items-center mt-10'>
             <img className='w-6/12' src={ErrorMessage} alt="404_page" />

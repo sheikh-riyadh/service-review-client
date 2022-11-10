@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
+import useTitle from '../../hooks/useTitle';
 
 const BlogDetails = () => {
     const { image, blogTitle, summary } = useLoaderData()
+    useTitle('blogs details')
     return (
         <div className='w-10/12 mx-auto text-center my-12'>
             <div className='flex justify-center'>

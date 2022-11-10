@@ -98,7 +98,7 @@ const Header = () => {
                     </div>
                 </div>
                 <div className='block lg:hidden ml-52'>
-                    <Link to='/'>
+                    <Link className='flex items-center' to='/'>
                         <img src={logo} alt='logo' className='w-6/12 lg:w-4/12 ml-5' />
                     </Link>
                 </div>

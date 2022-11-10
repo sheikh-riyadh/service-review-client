@@ -1,8 +1,11 @@
 import React from 'react';
 import { FaStar } from 'react-icons/fa';
+import useTitle from '../../hooks/useTitle';
 
 const SingleReview = ({ review, handleDeleteReview }) => {
     const { _id, reviewerMessage, reviewerName, reviewerImg, reviewerRating, serviceTitle } = review
+
+    useTitle('Review')
     return (
         <div className='mt-10'>
             <div className="card h-full bg-white text-black shadow-xl relative rounded-md">

@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 import { toast, ToastContainer } from 'react-toastify';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
+import useTitle from '../../hooks/useTitle';
 const googleProvider = new GoogleAuthProvider()
 const gitHubProvider = new GithubAuthProvider()
 
@@ -55,6 +56,8 @@ const Register = () => {
             })
             .catch(error => console.error(error))
     }
+
+    useTitle('Register')
     return (
         <div>
             <div className="hero min-h-screen">
