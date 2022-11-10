@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Service from '../../Service/Service';
 import About from '../About/About';
+import Newsletter from '../Newsletter/Newsletter';
 const Home = () => {
 
 
@@ -48,6 +49,9 @@ const Home = () => {
             </div>
             <div>
                 <About></About>
+            </div>
+            <div>
+                <Newsletter></Newsletter>
             </div>
         </div>
     );

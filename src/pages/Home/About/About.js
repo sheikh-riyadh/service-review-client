@@ -6,7 +6,7 @@ const About = () => {
         <div className='flex flex-row justify-between'>
             <div className="hero min-h-screen">
                 <div className="hero-content flex-col lg:flex-row-reverse">
-                    <img src={zuku} className="rounded-2xl shadow-2xl w-8/12 lg:w-4/12 lg:h-2/12" alt='zuku' />
+                    <img src={zuku} className="rounded-2xl shadow-2xl w-full lg:w-7/12 lg:h-8/12" alt='zuku' />
                     <div className='text-center lg:text-start'>
                         <h1 className="uppercase text-2xl lg:text-4xl font-bold">ABOUT ME</h1>
                         <p className="py-6 lg:pr-56">ZUKO combines the classic knowledge of traditional portraiture with an innovative and contemporary style.</p>
