@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import { AuthContext } from '../../contexts/AuthProvider';
 import SingleReview from './SingleReview';
+import NoFound from '../../assets/page-not-found.svg'
 
 const MyReviews = () => {
     const [myReviews, setMyReviews] = useState()
@@ -41,7 +42,10 @@ const MyReviews = () => {
                             <h2 className='uppercase text-2xl text-center lg:text-4xl font-bold pb-5 lg:pb-10'>my reviews</h2>
                         </>
                         :
-                        <><h2 className='uppercase text-2xl text-center lg:text-4xl font-bold pb-5 lg:pb-10'>No reviews fount</h2></>
+                        <div className='flex flex-col justify-center items-center'>
+                            <h2 className='uppercase text-2xl text-center lg:text-4xl font-bold pb-5 lg:pb-10'>No reviews found</h2>
+                            <img className='w-6/12' src={NoFound} alt="No found" />
+                        </div>
                 }
             </div>
             <div className='grid grid-cols-1 lg:grid-cols-3 gap-5'>

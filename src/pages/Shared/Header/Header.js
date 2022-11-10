@@ -37,7 +37,9 @@ const Header = () => {
                         </button>
                     </li>
                     <li className='mt-5 lg:mt-0 lg:mr-5'>
-                        <button className='border-0 hover:bg-[#ebb85e] text-black'>Add service</button>
+                        <Link className='border-0 hover:bg-[#ebb85e] text-black' to='/add-service'>
+                            <button className=''>Add service</button>
+                        </Link>
                     </li>
                     <li className='mt-5 lg:mt-0 lg:mr-5'>
                         <button onClick={handleSignOut} className='border-0 hover:bg-[#ebb85e] text-black'>Sign out</button>
