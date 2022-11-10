@@ -1,4 +1,5 @@
 import React from 'react';
+import { toast, ToastContainer } from 'react-toastify';
 import AddServiceImg from '../../assets/add-service.svg'
 
 const AddService = () => {
@@ -28,8 +29,12 @@ const AddService = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                if (data.acknowledged) {
+                    toast('Add service succesfully', { position: 'top-center', theme: 'dark' })
+                    form.reset()
+                }
             })
+            .catch(error => console.error(error))
 
     }
     return (
@@ -85,6 +90,7 @@ const AddService = () => {
                     <img className='w-full h-full' src={AddServiceImg} alt="add_service" />
                 </div>
             </div>
+            <ToastContainer></ToastContainer>
         </div>
     );
 };

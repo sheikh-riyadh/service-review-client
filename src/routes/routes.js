@@ -1,5 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../layout/Main";
+import BlogDetails from "../pages/Blogs/BlogDetails";
+import Blogs from "../pages/Blogs/Blogs";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import Home from "../pages/Home/Home/Home";
 import Login from "../pages/Login/Login";
@@ -44,8 +46,15 @@ export const router = createBrowserRouter([
             }, {
                 path: '/add-service',
                 element: <AddService></AddService>
-            },
-            {
+            }, {
+                path: '/blogs',
+                element: <Blogs></Blogs>,
+                loader: () => fetch('https://review-server.vercel.app/blogs')
+            }, {
+                path: '/details/:id',
+                element: <BlogDetails></BlogDetails>,
+                loader: ({ params }) => fetch(`https://review-server.vercel.app/blogs/${params.id}`)
+            }, {
                 path: '*',
                 element: <ErrorPage></ErrorPage>
             }

@@ -68,3 +68,26 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+PROJECT DETAILS
+/*==============================
+technology used by this projects
+=================================*/
+
+1) React js
+2) Mongodb
+3) Firebase 
+4) Express js
+5) Nodejs
+
+/*=============
+Feature
+==============*/
+1) User can add review on the service which he/she want
+2) Also user can add service in is website 
+3) If user not login user can't add review specific service
+4) user can login with google, github and also with email
+5) user also see all the reviews which is she/he given
+6) and if they want they can delete review
+7) Toast message 

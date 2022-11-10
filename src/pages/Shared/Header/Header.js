@@ -25,7 +25,7 @@ const Header = () => {
                 <Link className='hover:bg-[#ebb85e]' to='/services'>Services</Link>
             </li>
             <li className='ml-5 mt-5 lg:mt-0 lg:mr-5'>
-                <Link className='hover:bg-[#ebb85e]' to='/services'>Blog</Link>
+                <Link className='hover:bg-[#ebb85e]' to='/blogs'>Blog</Link>
             </li>
             {
                 user?.uid ? <>
