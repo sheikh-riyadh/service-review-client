@@ -17,8 +17,8 @@ const Header = () => {
             }).catch(error => console.error(error))
     }
     const headerItems = () => {
-        return <div className='flex flex-col lg:flex-row lg:bg-white py-2 font-semibold text-lg text-black'>
-            <li className='ml-5 mt-5 lg:mt-0 lg:mr-5'>
+        return <div className='flex flex-col lg:flex-row lg:bg-white py-1 font-semibold text-lg text-black'>
+            <li className='ml-5 mt-5 lg:mt-0 lg:mr-3'>
                 <Link className='hover:bg-[#ebb85e]' to='/'>Home</Link>
             </li>
             <li className='ml-5 mt-5 lg:mt-0 lg:mr-5'>
@@ -30,7 +30,11 @@ const Header = () => {
             {
                 user?.uid ? <>
                     <li className='mt-5 lg:mt-0 lg:mr-5'>
-                        <Link to='/my-reviews'><button className='border-0 hover:bg-[#ebb85e] text-black'>My reviews</button></Link>
+                        <button className='hover:bg-[#ebb85e] text-black'>
+                            <Link to='/my-reviews'>
+                                My reviews
+                            </Link>
+                        </button>
                     </li>
                     <li className='mt-5 lg:mt-0 lg:mr-5'>
                         <button className='border-0 hover:bg-[#ebb85e] text-black'>Add service</button>
@@ -40,8 +44,8 @@ const Header = () => {
                     </li>
                     <li className='mt-5 lg:mt-0 lg:mr-5'>
                         <div className="online">
-                            <div className="w-8 h-8 rounded-full">
-                                <img src={user.photoURL} title={user?.displayName} alt='' />
+                            <div className="w-9 h-9">
+                                <img className='rounded-md' src={user.photoURL} title={user?.displayName} alt='userImage' />
                             </div>
                         </div>
                     </li>
@@ -97,7 +101,7 @@ const Header = () => {
                     </Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal p-0">
+                    <ul className="menu menu-horizontal p-0 rounded-md">
                         {
                             headerItems()
                         }

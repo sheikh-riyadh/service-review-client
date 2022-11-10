@@ -12,7 +12,7 @@ const Service = ({ service }) => {
                 <div className="card glass shadow-xl rounded-xl text-white">
                     <figure>
                         <PhotoView key={_id} src={image}>
-                            <img className='h-full w-full' src={image} alt="serivce" />
+                            <img className='h-[280px] w-[570px]' src={image} alt="serivce" />
                         </PhotoView>
                     </figure>
                     <div className="card-body">

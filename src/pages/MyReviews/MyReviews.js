@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { toast, ToastContainer } from 'react-toastify';
 import { AuthContext } from '../../contexts/AuthProvider';
 import SingleReview from './SingleReview';
 
 const MyReviews = () => {
-    const [myReviews, setMyReviews] = useState([])
+    const [myReviews, setMyReviews] = useState()
     const { user } = useContext(AuthContext)
     useEffect(() => {
         fetch(`https://review-server.vercel.app/reviews?email=${user?.email}`)
@@ -13,11 +14,36 @@ const MyReviews = () => {
     }, [user?.email])
 
     const handleDeleteReview = (id) => {
-        console.log(id)
+        const agreeDelete = window.confirm('Do you want to delete this item?')
+        console.log(agreeDelete)
+        if (agreeDelete) {
+            fetch(`https://review-server.vercel.app/delete/${id}`, {
+                method: 'PUT'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.deletedCount > 0) {
+                        const remaingReviews = myReviews.filter(review => review?._id !== id)
+                        setMyReviews(remaingReviews)
+                        toast('Delete succesfull.', { position: 'top-center', theme: 'dark' })
+                    }
+                })
+                .catch(error => console.error(error))
+        }
+
     }
     return (
         <div className='my-24 mx-5 lg:mx-24'>
-            <h2 className='uppercase text-2xl text-center lg:text-4xl font-bold pb-5 lg:pb-10'>my reviews</h2>
+            <div>
+                {
+                    myReviews?.length > 0 ?
+                        <>
+                            <h2 className='uppercase text-2xl text-center lg:text-4xl font-bold pb-5 lg:pb-10'>my reviews</h2>
+                        </>
+                        :
+                        <><h2 className='uppercase text-2xl text-center lg:text-4xl font-bold pb-5 lg:pb-10'>No reviews fount</h2></>
+                }
+            </div>
             <div className='grid grid-cols-1 lg:grid-cols-3 gap-5'>
                 {
                     myReviews?.map(review => <SingleReview
@@ -27,6 +53,7 @@ const MyReviews = () => {
                     ></SingleReview>)
                 }
             </div>
+            <ToastContainer></ToastContainer>
         </div>
     );
 };
