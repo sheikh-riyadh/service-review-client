@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Service from '../../Service/Service';
+import About from '../About/About';
 const Home = () => {
 
 
@@ -44,6 +45,9 @@ const Home = () => {
                 <Link to='/services'>
                     <button className='btn uppercase px-16 hover:text-[#ebb85e] hover:bg-white bg-[#ebb85e] rounded text-xl font-semibold text-black'>See all</button>
                 </Link>
+            </div>
+            <div>
+                <About></About>
             </div>
         </div>
     );
